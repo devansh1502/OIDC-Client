@@ -142,8 +142,8 @@
 				console.log("SUCCESS: ", data);
 				display(data);
 			},
-			error : function(e) {
-				console.log("ERROR: ", e);
+			error : function(xhr,status,error) {
+				console.log("jqXHR: ", xhr);
 				display(e);
 			},
 			done : function(e) {

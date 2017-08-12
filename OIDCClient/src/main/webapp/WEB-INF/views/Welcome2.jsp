@@ -156,55 +156,59 @@
 
 		});
 
-		function submitViaAjax() {
+		 $("#btn-submit").click(function() {
 
-			var dataString = {}
-			dataString["authorizationEndpoint"] = $("#authorizationEndpoint")
-					.val();
-			dataString["tokenEndpoint"] = $("#tokenEndpoint").val();
-			dataString["tokenKeysEndpoint"] = $("#tokenKeysEndpoint").val();
-			dataString["clientId"] = $("#clientId").val();
-			dataString["clientSecret"] = $("#clientsecret").val();
-			dataString["scope"] = $("#scope").val();
-			dataString["authorizationCodeFlow"] = $("#authorization_Code_Flow")
-					.val();
-			console.log(JSON.stringify(dataString));
-			$.ajax({
-				type : "POST",
-				headers : {
-					'Accept' : 'application/json',
-					'Content-Type' : 'application/json'
-				},
-				contentType : "application/json",
-				url : "${home}startOAuth",
-				data : JSON.stringify(dataString),
-				dataType : 'json',
-				timeout : 100000,
-				success : function(data) {
-					console.log("SUCCESS: ", data);
-					display(data);
-				},
-				error : function(e) {
-					console.log("ERROR: ", e);
-					display(e);
-				},
-				done : function(e) {
-					console.log("DONE");
-					enableSearchButton(true);
-				}
-			});
+			 var dataString = {}
+				dataString["authorizationTokenEndpoint"] = $(
+						"#authorizationTokenEndpoint").val();
+				dataString["tokenEndpoint"] = $("#tokenEndpoint").val();
+				dataString["tokenKeysEndpoint"] = $("#tokenKeysEndpoint").val();
+				dataString["clientId"] = $("#clientId").val();
+				dataString["clientSecret"] = $("#clientsecret").val();
+				dataString["scope"] = $("#scope").val();
+				dataString["authorizationCodeFlow"] = $("#authorization_Code_Flow")
+						.val();
+				console.log(JSON.stringify(dataString));
+				$.ajax({
+					type : "POST",
+				/* 	headers : {
+						'Accept' : 'application/json',
+						'Content-Type' : 'application/json'
+					}, */
+					contentType : "application/json",
+					url : "${home}startOAuth",
+					data : JSON.stringify(dataString),
+					dataType : 'json',
+					timeout : 100000,
+					success : function(data) {
+						console.log("SUCCESS: ", data);
+						//display(data);
+					},
+					error : function(xhr,status,error) {
+						console.log("ERROR:");
+						console.log(xhr);
+						console.log(status);
+						console.log(error);
+						//display(e);
+					},
+					done : function(e) {
+						console.log("DONE");
+						//enableSearchButton(true);
+					}
+				})/* .done(function() {
+				    alert( "success" )) */; 
 
-		}
+		});
 
-		function enableSubmitButton(flag) {
+/* 		function enableSubmitButton(flag) {
 			$("#btn-submit").prop("disabled", flag);
-		}
+		} */
 
-		function display(data) {
+	/* 	function display(data) {
 			var json = "<h4>Ajax Response</h4><pre>"
 					+ JSON.stringify(data, null, 4) + "</pre>";
 			$('#feedback').html(json);
-		}
+		} */
 	</script>
 
 </body>

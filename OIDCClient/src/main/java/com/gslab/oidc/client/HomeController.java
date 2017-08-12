@@ -36,7 +36,8 @@ import com.gslab.oidc.model.ClientRegistration;
 public class HomeController {
 	private static final String ACCESS_TOKEN = "ACCESS_TOKEN";
 	private static final String INSTANCE_URL = "INSTANCE_URL";
-
+    //use properties file..(for client id and secret and everything else 
+	
 	// clientId is 'Consumer Key' in the Remote Access UI
 	private String clientId = "3MVG9d8..z.hDcPLns0FEP7vMhKsiVdeOtmS_MlAA8xp3n7p.LvSmSG8Kz56bCFwWsv0sGlCfkePHXs8BqvC5";
 	// clientSecret is 'Consumer Secret' in the Remote Access UI
@@ -56,9 +57,9 @@ public class HomeController {
 	}
 	/*public String authenticate(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException {*/
-	@JsonView(Views.Public.class)
-	@RequestMapping(value = "/startOAuth", method=RequestMethod.POST , consumes={"application/json"})
-	public String authenticate(@RequestBody ClientRegistration clientRegistration, HttpSession session) throws ServletException, IOException {
+	//@JsonView(Views.Public.class)
+	@RequestMapping(value = "/startOAuth", method=RequestMethod.POST)
+	public @ResponseBody String authenticate(@RequestBody ClientRegistration clientRegistration, HttpSession session) throws ServletException, IOException {
 		/*System.out.println("HI am i being called");
 		System.out.println("hello java");
 		*/
@@ -72,9 +73,9 @@ public class HomeController {
 		
 		session.setAttribute(sessionStr, clientRegistration);
 		ClientRegistration cR = (ClientRegistration) session.getAttribute(sessionStr);
-		/*System.out.println(cR.getAuthorizationTokenEndpoint());
+		System.out.println(cR.getAuthorizationTokenEndpoint());
 		System.out.println(cR.getTokenEndpoint());
-		System.out.println(cR.getTokenKeysEndpoint());*/
+		System.out.println(cR.getTokenKeysEndpoint());
 		System.out.println(cR.getClientId());
 		System.out.println(cR.getClientSecret());
 		System.out.println(cR.getScope());
