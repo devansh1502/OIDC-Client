@@ -1,0 +1,9 @@
+com\gslab\oidc\jsonViews\Views$Public.class
+com\gslab\oidc\model\ClientRegistration.class
+com\gslab\oidc\model\User.class
+com\gslab\oidc\servlet3\MyWebIntializer.class
+com\gslab\oidc\client\HomeController.class
+com\gslab\oidc\Config\SpringWebConfig.class
+com\gslab\oidc\Controller\AjaxController.class
+com\gslab\oidc\jsonViews\Views.class
+com\gslab\oidc\model\AjaxResponseBody.class
